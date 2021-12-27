@@ -12,25 +12,31 @@
 </resultMap>
 
 	<insert id="insert">
-		
+		insert into user(id,password,name) values(#{id},#{password},#{name})
 	</insert>
 	
 	
 	<delete id="delete">
-	
+		delete from user where id=#{id}
 	</delete>
 	
 	
 	<update id="update">
-	
+		update user set id=#{id},name=#{name} where id=#{id}
 	</update>
 	
 	
 	<select id="select" resultMap="UserMap">
-	
+		select * from user where id={id}
 	</select>
 	
-	<select id="checkId" resultMap="int">
 	
+	<select id="checkId" resultType="int">
+		select count(*) from user where id=#{id};
 	</select>	
+
+
+
+
+
 </mapper>
