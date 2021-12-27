@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.colorPalette.dao.ILoginMapper">
+	<resultMap id="UserMap" type="com.example.colorPalette.vo.UserVO">
+	<result property="id" column="id"/>
+	<result property="password" column="password"/>
+	<result property="name" column="name"/>
+	<result property="joinDate" column="join_date"/>
+</resultMap>
+
+	<insert id="insert">
+		
+	</insert>
+	
+	
+	<delete id="delete">
+	
+	</delete>
+	
+	
+	<update id="update">
+	
+	</update>
+	
+	
+	<select id="select" resultMap="UserMap">
+	
+	</select>
+	
+	<select id="checkId" resultMap="int">
+	
+	</select>	
+</mapper>
