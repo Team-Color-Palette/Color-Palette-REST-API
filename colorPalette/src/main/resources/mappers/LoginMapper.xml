@@ -4,12 +4,14 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.colorPalette.dao.ILoginMapper">
-	<resultMap id="UserMap" type="com.example.colorPalette.vo.UserVO">
-	<result property="id" column="id"/>
-	<result property="password" column="password"/>
-	<result property="name" column="name"/>
-	<result property="joinDate" column="join_date"/>
-</resultMap>
+	
+	
+	<resultMap id="Map" type="com.example.colorPalette.vo.UserVO">
+		<result property="id" column="id"/>
+		<result property="password" column="password"/>
+		<result property="name" column="name"/>
+		<result property="joinDate" column="join_date"/>
+	</resultMap>
 
 	<insert id="insert">
 		insert into user(id,password,name) values(#{id},#{password},#{name})
@@ -26,13 +28,13 @@
 	</update>
 	
 	
-	<select id="select" resultMap="UserMap">
-		select * from user where id={id}
+	<select id="select" resultMap="Map">
+		select * from user where id=#{id}
 	</select>
 	
 	
 	<select id="checkId" resultType="int">
-		select count(*) from user where id=#{id};
+		select count(*) from user where id=#{id}
 	</select>	
 
 

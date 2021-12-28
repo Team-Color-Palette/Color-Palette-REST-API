@@ -28,10 +28,10 @@ public class LoginController {
 	public String insert(@RequestBody UserVO vo) {
 		int i = service.checkId(vo.getId());
 		if(i > 0) {
+			return "joinFail";
+		} else {
 			service.insert(vo);		
 			return "joinSuccess";
-		} else {
-			return "joinFail";
 		}
 		
 	}
@@ -39,14 +39,18 @@ public class LoginController {
 	//회원탈퇴
 	@DeleteMapping("/{id}")
 	public String delete(@PathVariable String id) {
+		service.delete(id);
 		return "deleteSuccess";
 	}
 	
 	//회원조회
 	@GetMapping("/{id}")
-	public UserVO select(@PathVariable String id ) {
-		
-		return service.select(id);
+	public UserVO select(@PathVariable String id) {
+		System.out.println("========================");
+		System.out.println(id);
+		UserVO vo = service.select(id);
+		System.out.println(vo);
+		return vo;
 	}
 	
 	//로그인
