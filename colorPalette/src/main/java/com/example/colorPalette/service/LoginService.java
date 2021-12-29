@@ -1,6 +1,7 @@
 package com.example.colorPalette.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.colorPalette.dao.ILoginMapper;
@@ -14,7 +15,9 @@ public class LoginService implements ILoginService {
 	
 	@Override
 	public void insert(UserVO vo) {
-		
+		BCryptPasswordEncoder endcoder = new BCryptPasswordEncoder();
+		String securePw = endcoder.encode(vo.getPassword()); 
+		vo.setPassword(securePw);
 		mapper.insert(vo);
 	}
 
