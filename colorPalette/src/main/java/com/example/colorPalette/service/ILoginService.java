@@ -14,8 +14,8 @@ public interface ILoginService {
 	 public void update(UserVO vo);
 	 
 	 //특정 회원 조회
-	 public UserVO select(String id);
+	 public UserVO select(String email);
 	 
 	 //아이디 중복확인
-	 public int checkId(String id);
+	 public int checkId(String email);
 }

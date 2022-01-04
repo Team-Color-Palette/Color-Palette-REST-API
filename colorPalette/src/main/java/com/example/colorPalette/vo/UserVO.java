@@ -4,15 +4,16 @@ import java.util.Date;
 
 public class UserVO {
 
-	private String id;
+	private int id;
+	private String email;
 	private String password;
 	private String name;
 	private Date joinDate;
 	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getPassword() {
@@ -33,10 +34,20 @@ public class UserVO {
 	public void setJoinDate(Date joinDate) {
 		this.joinDate = joinDate;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	@Override
 	public String toString() {
-		return "UserVO [id=" + id + ", password=" + password + ", name=" + name + ", joinDate=" + joinDate + "]";
+		return "UserVO [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", joinDate="
+				+ joinDate + "]";
 	}
+	
 	
 	
 	

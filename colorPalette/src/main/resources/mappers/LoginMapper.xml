@@ -8,13 +8,14 @@
 	
 	<resultMap id="Map" type="com.example.colorPalette.vo.UserVO">
 		<result property="id" column="id"/>
+		<result property="email" column="email"/>
 		<result property="password" column="password"/>
 		<result property="name" column="name"/>
 		<result property="joinDate" column="join_date"/>
 	</resultMap>
 
 	<insert id="insert">
-		insert into user(id,password,name) values(#{id},#{password},#{name})
+		insert into user(email,password,name) values(#{email},#{password},#{name})
 	</insert>
 	
 	
@@ -22,23 +23,18 @@
 		delete from user where id=#{id}
 	</delete>
 	
-	
 	<update id="update">
-		update user set id=#{id},name=#{name} where id=#{id}
+		update user set name=#{name} where id=#{id}
 	</update>
 	
 	
 	<select id="select" resultMap="Map">
-		select * from user where id=#{id}
+		select * from user where email=#{email}
 	</select>
 	
 	
 	<select id="checkId" resultType="int">
-		select count(*) from user where id=#{id}
+		select count(*) from user where email=#{email}
 	</select>	
-
-
-
-
 
 </mapper>

@@ -27,7 +27,8 @@ public class LoginController {
 	//회원가입
 	@PostMapping("/")
 	public String insert(@RequestBody UserVO vo) {
-		int i = service.checkId(vo.getId());
+		System.out.println(vo);
+		int i = service.checkId(vo.getEmail());
 		if(i > 0) {
 			return "joinFail";
 		} else {
@@ -57,7 +58,8 @@ public class LoginController {
 	//로그인
 	@PostMapping("/loginCheck")
 	public String login(@RequestBody UserVO input , HttpSession session) {
-		UserVO vo = service.select(input.getId());
+		System.out.println(input);
+		UserVO vo = service.select(input.getEmail());
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		if(vo != null) {
 			if(encoder.matches(input.getPassword(),vo.getPassword())) {

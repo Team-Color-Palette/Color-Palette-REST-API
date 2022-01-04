@@ -34,15 +34,15 @@ public class LoginService implements ILoginService {
 	}
 
 	@Override
-	public UserVO select(String id) {
+	public UserVO select(String email) {
 		
-		return mapper.select(id);
+		return mapper.select(email);
 	}
 
 	@Override
-	public int checkId(String id) {
+	public int checkId(String email) {
 		
-		return mapper.checkId(id);
+		return mapper.checkId(email);
 	}
 
 }
