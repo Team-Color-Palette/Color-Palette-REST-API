@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.colorPalette.dao.IColorMapper">
+	
+	
+	<resultMap id="Map" type="com.example.colorPalette.vo.ColorVO">
+		<result property="id" column="id"/>
+		<result property="hex" column="hex"/>
+	</resultMap>
+
+	<insert id="insert">
+		insert into color_box(hex) values(#{hex})
+	</insert>
+	
+	
+	<update id="update">
+		update color_box set hex=#{hex} where id=#{id}
+	</update>
+	
+	<delete id="delete">
+		delete from color_box where id=#{id}
+	</delete>
+	
+	<select id="selectAll" resultMap="Map">
+		select * from color_box
+	</select>
+	
+	<select id="select" resultMap="Map">
+		select * from color_box where id=#{id}
+	</select>
+	
+	
+	<select id="checkHex" resultType="int">
+		select count(*) from color_box where hex=#{hex}
+	</select>	
+
+</mapper>
