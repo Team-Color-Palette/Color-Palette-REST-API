@@ -17,8 +17,8 @@ import com.example.colorPalette.service.ColorService;
 import com.example.colorPalette.vo.ColorVO;
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*") 
 @RequestMapping("/color")
+@CrossOrigin(origins = "*", allowedHeaders = "*") 
 public class ColorController {
 
 	@Autowired

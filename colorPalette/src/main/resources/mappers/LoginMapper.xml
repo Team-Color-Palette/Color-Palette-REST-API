@@ -32,6 +32,9 @@
 		select * from user where email=#{email}
 	</select>
 	
+	<select id="selectId" resultMap="Map">
+		select * from user where id=#{id}
+	</select>
 	
 	<select id="checkId" resultType="int">
 		select count(*) from user where email=#{email}

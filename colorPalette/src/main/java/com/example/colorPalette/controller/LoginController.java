@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,8 +20,8 @@ import com.example.colorPalette.service.LoginService;
 import com.example.colorPalette.vo.UserVO;
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*") 
 @RequestMapping("/login")
+@CrossOrigin(origins = "*", allowedHeaders = "*") 
 public class LoginController {
 
 	@Autowired 
@@ -40,19 +41,26 @@ public class LoginController {
 		
 	}
 	
+	//회원정보 수정
+	@PutMapping("/")
+	public String update(@RequestBody UserVO vo) {
+		service.update(vo);
+		return "updateSuccess";
+	}
+	
 	//회원탈퇴
 	@DeleteMapping("/{id}")
-	public String delete(@PathVariable String id) {
+	public String delete(@PathVariable int id) {
 		service.delete(id);
 		return "deleteSuccess";
 	}
 	
 	//회원조회
 	@GetMapping("/{id}")
-	public UserVO select(@PathVariable String id) {
+	public UserVO select(@PathVariable int id) {
 		System.out.println("========================");
 		System.out.println(id);
-		UserVO vo = service.select(id);
+		UserVO vo = service.selectId(id);
 		System.out.println(vo);
 		return vo;
 	}

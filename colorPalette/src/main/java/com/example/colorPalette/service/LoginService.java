@@ -22,7 +22,7 @@ public class LoginService implements ILoginService {
 	}
 
 	@Override
-	public void delete(String id) {
+	public void delete(int id) {
 		
 		mapper.delete(id);
 	}
@@ -38,11 +38,19 @@ public class LoginService implements ILoginService {
 		
 		return mapper.select(email);
 	}
+	
+	@Override
+	public UserVO selectId(int id) {
+		
+		return mapper.selectId(id);
+	}
 
 	@Override
 	public int checkId(String email) {
 		
 		return mapper.checkId(email);
 	}
+
+
 
 }

@@ -11,15 +11,20 @@ public interface ILoginMapper {
 	 public void insert(UserVO vo);
 	 
 	 //회원탈퇴
-	 public void delete(String id);
+	 public void delete(int id);
 	 
 	 //회원수정
 	 public void update(UserVO vo);
 	 
-	 //특정 회원 조회
+	 //이메일로 특정 회원 조회
 	 public UserVO select(String email);
+	 
+	 //아이디로 특정 회원 조회
+	 public UserVO selectId(int id);
 	 
 	 //이메일중복확인
 	 public int checkId(String email);
+	 
+	 
 
 }
