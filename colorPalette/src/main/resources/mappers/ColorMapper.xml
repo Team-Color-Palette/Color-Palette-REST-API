@@ -44,7 +44,7 @@
 		select * from color_box where id=#{id}
 	</select>
 	
-	<select id="searchBox" resultType="Map1">
+	<select id="searchBox" resultMap="Map1">
 		select * from color_box where title like concat("%",#{title},"%")
 	</select>	
 	
@@ -64,11 +64,11 @@
 		delete from color where box_id=#{boxId}
 	</delete>
 	
-	<select id="selectHex" resultType="Map2">
+	<select id="selectHex" resultMap="Map2">
 		select * from color where box_id=#{boxId}
 	</select>
 	
-	<select id="searchHex" resultType="Map2">
+	<select id="searchHex" resultMap="Map2">
 		select * from color where hex like concat("%",#{hex},"%") AND box_id=3
 	</select>
 </mapper>

@@ -29,7 +29,7 @@ public interface IColorMapper {
 	public List<ColorBoxVO> selectBox(int id);
 	
 	//컬러박스 검색
-	public List<ColorBoxVO> searchBox(String title);
+	public ColorBoxVO searchBox(String title);
 	
 	//색상 코드 추가
 	public void insertHex(ColorVO vo);

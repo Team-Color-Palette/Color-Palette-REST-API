@@ -34,6 +34,12 @@ public class ColorBoxVO {
 		this.regDate = regDate;
 	}
 	
+	@Override
+	public String toString() {
+		return "ColorBoxVO [boxId=" + boxId + ", id=" + id + ", title=" + title + ", regDate=" + regDate + "]";
+	}
+	
+	
 	
 	
 	

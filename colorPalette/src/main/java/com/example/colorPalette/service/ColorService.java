@@ -53,7 +53,7 @@ public class ColorService implements IColorService {
 	}
 
 	@Override
-	public List<ColorBoxVO> searchBox(String title) {
+	public ColorBoxVO searchBox(String title) {
 		
 		return mapper.searchBox(title);
 	}
