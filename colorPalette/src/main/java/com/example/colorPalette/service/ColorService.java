@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.colorPalette.dao.IColorMapper;
+import com.example.colorPalette.vo.ColorBoxVO;
 import com.example.colorPalette.vo.ColorVO;
 
 
@@ -14,41 +15,90 @@ public class ColorService implements IColorService {
 
 	@Autowired
 	IColorMapper mapper;
+
+	@Override
+	public void insertBox(ColorBoxVO vo) {
+		mapper.insertBox(vo);
+		
+	}
+
+	@Override
+	public void updateBox(ColorBoxVO vo) {
+		mapper.updateBox(vo);
+		
+	}
+
+	@Override
+	public void deleteBox(int boxId) {
+		mapper.deleteBox(boxId);
+		
+	}
 	
 	@Override
-	public void insert(ColorVO vo) {
-		mapper.insert(vo);
-
-	}
-
-	@Override
-	public void update(ColorVO vo) {
-		mapper.update(vo);
-
-	}
-
-	@Override
-	public void delete(int id) {
-		mapper.delete(id);
-
-	}
-
-	@Override
-	public List<ColorVO> selectAll() {
+	public void deleteAllBox(int id) {
+		mapper.deleteAllBox(id);
 		
-		return mapper.selectAll();
 	}
 
 	@Override
-	public ColorVO select(int id) {
+	public List<ColorBoxVO> selectAllBox() {
 		
-		return mapper.select(id);
+		return mapper.selectAllBox();
 	}
 
 	@Override
-	public int checkHex(String hex) {
+	public List<ColorBoxVO> selectBox(int id) {
 		
-		return mapper.checkHex(hex);
+		return mapper.selectBox(id);
 	}
+
+	@Override
+	public List<ColorBoxVO> searchBox(String title) {
+		
+		return mapper.searchBox(title);
+	}
+
+	@Override
+	public void insertHex(ColorVO vo) {
+		mapper.insertHex(vo);
+		
+	}
+
+	@Override
+	public void updateHex(ColorVO vo) {
+		mapper.updateHex(vo);
+		
+	}
+
+	@Override
+	public void deleteHex(int colorId) {
+		mapper.deleteHex(colorId);
+		
+	}
+	
+	@Override
+	public void deleteAllHex(int boxId) {
+		mapper.deleteAllHex(boxId);
+		
+	}
+
+	
+	@Override
+	public List<ColorVO> selectHex(int boxId) {
+		
+		return mapper.selectHex(boxId);
+	}
+	
+
+	@Override
+	public List<ColorVO> searchHex(ColorVO vo) {
+		
+		return mapper.searchHex(vo);
+	}
+
+	
+	
+
+	
 
 }

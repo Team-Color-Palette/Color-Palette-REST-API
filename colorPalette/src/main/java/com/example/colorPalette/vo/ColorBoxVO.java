@@ -2,30 +2,30 @@ package com.example.colorPalette.vo;
 
 import java.util.Date;
 
-public class ColorVO {
+public class ColorBoxVO {
 
-	private int colorId;
 	private int boxId;
-	private String hex;
+	private int id;
+	private String title;
 	private Date regDate;
 	
-	public int getColorId() {
-		return colorId;
-	}
-	public void setColorId(int colorId) {
-		this.colorId = colorId;
-	}
 	public int getBoxId() {
 		return boxId;
 	}
 	public void setBoxId(int boxId) {
 		this.boxId = boxId;
 	}
-	public String getHex() {
-		return hex;
+	public int getId() {
+		return id;
 	}
-	public void setHex(String hex) {
-		this.hex = hex;
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public Date getRegDate() {
 		return regDate;
@@ -33,6 +33,8 @@ public class ColorVO {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
+	
+	
 	
 	
 }

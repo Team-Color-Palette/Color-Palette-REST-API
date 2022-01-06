@@ -6,35 +6,69 @@
 <mapper namespace="com.example.colorPalette.dao.IColorMapper">
 	
 	
-	<resultMap id="Map" type="com.example.colorPalette.vo.ColorVO">
+	<resultMap id="Map1" type="com.example.colorPalette.vo.ColorBoxVO">
+		<result property="boxId" column="box_id"/>
 		<result property="id" column="id"/>
+		<result property="title" column="title"/>
+		<result property="regDate" column="reg_date"/>
+	</resultMap>
+	
+		<resultMap id="Map2" type="com.example.colorPalette.vo.ColorVO">
+		<result property="colorId" column="color_id"/>
+		<result property="boxId" column="box_id"/>
 		<result property="hex" column="hex"/>
+		<result property="regDate" column="reg_date"/>
 	</resultMap>
 
-	<insert id="insert">
-		insert into color_box(hex) values(#{hex})
+	<insert id="insertBox">
+		insert into color_box(id,title) values(#{id},#{title})
 	</insert>
 	
-	
-	<update id="update">
-		update color_box set hex=#{hex} where id=#{id}
+	<update id="updateBox">
+		update color_box set title=#{title} where box_id=#{boxId}
 	</update>
 	
-	<delete id="delete">
+	<delete id="deleteBox">
+		delete from color_box where box_id=#{boxId}
+	</delete>
+	
+	<delete id="deleteAllBox">
 		delete from color_box where id=#{id}
 	</delete>
 	
-	<select id="selectAll" resultMap="Map">
+	<select id="selectAllBox" resultMap="Map1">
 		select * from color_box
 	</select>
 	
-	<select id="select" resultMap="Map">
+	<select id="selectBox" resultMap="Map1">
 		select * from color_box where id=#{id}
 	</select>
 	
-	
-	<select id="checkHex" resultType="int">
-		select count(*) from color_box where hex=#{hex}
+	<select id="searchBox" resultType="Map1">
+		select * from color_box where title like concat("%",#{title},"%")
 	</select>	
+	
+	<insert id="insertHex">
+		insert into color(box_id,hex) values(#{boxId},#{hex})
+	</insert>
 
+	<update id="updateHex">
+		update color set hex="HHHH" where color_id=#{colorId} 
+	</update>
+	
+	<delete id="deleteHex">
+		delete from color where color=#{colorId}
+	</delete>
+	
+	<delete id="deleteAllHex">
+		delete from color where box_id=#{boxId}
+	</delete>
+	
+	<select id="selectHex" resultType="Map2">
+		select * from color where box_id=#{boxId}
+	</select>
+	
+	<select id="searchHex" resultType="Map2">
+		select * from color where hex like concat("%",#{hex},"%") AND box_id=3
+	</select>
 </mapper>
