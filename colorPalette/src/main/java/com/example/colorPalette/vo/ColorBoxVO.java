@@ -8,6 +8,10 @@ public class ColorBoxVO {
 	private int id;
 	private String title;
 	private Date regDate;
+	private int boxLike;
+	private boolean favorites;
+	
+	
 	
 	public int getBoxId() {
 		return boxId;
@@ -33,11 +37,28 @@ public class ColorBoxVO {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-	
+	public int getBoxLike() {
+		return boxLike;
+	}
+	public void setBoxLike(int boxLike) {
+		this.boxLike = boxLike;
+	}
+
+	public boolean isFavorites() {
+		return favorites;
+	}
+	public void setFavorites(boolean favorites) {
+		this.favorites = favorites;
+	}
 	@Override
 	public String toString() {
-		return "ColorBoxVO [boxId=" + boxId + ", id=" + id + ", title=" + title + ", regDate=" + regDate + "]";
+		return "ColorBoxVO [boxId=" + boxId + ", id=" + id + ", title=" + title + ", regDate=" + regDate + ", boxLike="
+				+ boxLike + ", favorites=" + favorites + "]";
 	}
+
+	
+	
+	
 	
 	
 	

@@ -11,6 +11,8 @@
 		<result property="id" column="id"/>
 		<result property="title" column="title"/>
 		<result property="regDate" column="reg_date"/>
+		<result property="boxLike" column="box_like"/>
+		<result property="favorites" column="favorites"/>
 	</resultMap>
 	
 		<resultMap id="Map2" type="com.example.colorPalette.vo.ColorVO">
@@ -20,6 +22,7 @@
 		<result property="regDate" column="reg_date"/>
 	</resultMap>
 
+     <!-- ColorBox -->
 	<insert id="insertBox">
 		insert into color_box(id,title) values(#{id},#{title})
 	</insert>
@@ -37,27 +40,49 @@
 	</delete>
 	
 	<select id="selectAllBox" resultMap="Map1">
-		select * from color_box
+		select * from color_box order by box_id desc
 	</select>
 	
 	<select id="selectBox" resultMap="Map1">
-		select * from color_box where id=#{id}
+		select * from color_box where id=#{id} order by box_id desc
 	</select>
 	
 	<select id="searchBox" resultMap="Map1">
 		select * from color_box where title like concat("%",#{title},"%")
 	</select>	
 	
+	<update id="plusBoxLike">
+		update color_box set box_like = box_like + 1 where box_id = #{boxId}
+	</update>
+	
+	<update id="enrollment">
+		update color_box set favorites = 1 where box_id = #{boxId}
+	</update>
+	
+	<update id="release" >
+		update color_box set favorites = 0 where box_id = #{boxId}
+	</update>
+	
+	<select id="favoritesList" resultMap="Map1">
+		select * from color_box where favorites = 1 and id = #{id}
+	</select>
+	
+	<select id="boxLikeDesc" resultMap="Map1">
+		select * from color_box order by box_like desc
+	</select>
+	
+	  <!-- Color -->
+	
 	<insert id="insertHex">
 		insert into color(box_id,hex) values(#{boxId},#{hex})
 	</insert>
 
 	<update id="updateHex">
-		update color set hex="HHHH" where color_id=#{colorId} 
+		update color set hex=#{hex} where color_id=#{colorId} 
 	</update>
 	
 	<delete id="deleteHex">
-		delete from color where color=#{colorId}
+		delete from color where color_id=#{colorId}
 	</delete>
 	
 	<delete id="deleteAllHex">
@@ -65,10 +90,12 @@
 	</delete>
 	
 	<select id="selectHex" resultMap="Map2">
-		select * from color where box_id=#{boxId}
+		select * from color where box_id=#{boxId} order by color_id desc
 	</select>
 	
 	<select id="searchHex" resultMap="Map2">
-		select * from color where hex like concat("%",#{hex},"%") AND box_id=3
+		select * from color where hex like concat(#{hex},"%") AND box_id=#{boxId}
 	</select>
+	
+	
 </mapper>

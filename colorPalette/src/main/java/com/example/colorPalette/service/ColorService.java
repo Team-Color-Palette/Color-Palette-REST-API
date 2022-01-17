@@ -59,6 +59,38 @@ public class ColorService implements IColorService {
 	}
 
 	@Override
+	public void plusBoxLike(int boxId) {
+		mapper.plusBoxLike(boxId);
+		
+	}
+	
+	@Override
+	public void enrollment(int boxId) {
+		mapper.enrollment(boxId);
+		
+	}
+
+	@Override
+	public void release(int boxId) {
+		mapper.release(boxId);
+		
+	}
+
+	@Override
+	public List<ColorBoxVO> favoritesList(int id) {
+		
+		return mapper.favoritesList(id);
+	}
+
+	@Override
+	public List<ColorBoxVO> boxLikeDesc() {
+		
+		return mapper.boxLikeDesc();
+	}
+
+
+	
+	@Override
 	public void insertHex(ColorVO vo) {
 		mapper.insertHex(vo);
 		
@@ -96,6 +128,8 @@ public class ColorService implements IColorService {
 		return mapper.searchHex(vo);
 	}
 
+	
+	
 	
 	
 

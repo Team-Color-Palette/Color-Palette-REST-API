@@ -2,6 +2,7 @@ package com.example.colorPalette.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.colorPalette.service.ColorService;
 import com.example.colorPalette.vo.ColorBoxVO;
-import com.example.colorPalette.vo.ColorVO;
 
 @RestController
 @RequestMapping("/colorBox")
@@ -89,6 +89,40 @@ public class ColorBoxController {
 	@GetMapping("/{title}")
 	public ColorBoxVO searchBox(@PathVariable String title){
 		return service.searchBox(title);
+	}
+	
+	//컬러박스 좋아요 추가
+	@PutMapping("/{boxId}")
+	public String plusBoxLike(@PathVariable int boxId) {
+		service.plusBoxLike(boxId);
+		return "plusLikeSuccess";
+	}
+	
+	//컬러박스 즐겨찾기 등록
+	@PutMapping("/{boxId}/1")
+	public String enrollment(@PathVariable int boxId) {
+		service.enrollment(boxId);
+		return "enrollmentSuccess";
+	}
+	
+	//컬러박스 즐겨찾기 해제
+	@PutMapping("/{boxId}/2")
+	public String release(@PathVariable int boxId) {
+		service.release(boxId);
+		return "releaseSuccess";
+	}
+	
+	//즐겨찾기를 등록한 회원의 컬러박스 리스트
+	@GetMapping("/{id}/2")
+	public List<ColorBoxVO> favoritesList(@PathVariable int id) {
+		return service.favoritesList(id);
+		
+	}
+	
+	//컬러박스 좋아요 많은 순으로 전체 조회
+	@GetMapping("/1")
+	public List<ColorBoxVO> boxLikeDesc(){
+		return service.boxLikeDesc();
 	}
 	
 }

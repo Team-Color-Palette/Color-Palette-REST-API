@@ -28,6 +28,23 @@ public interface IColorService {
 		//컬러박스 검색
 		public ColorBoxVO searchBox(String title);
 		
+		//컬러박스 좋아요 추가
+		public void plusBoxLike(int boxId);
+		
+		//컬러박스 즐겨찾기 등록
+		public void enrollment(int boxId); 
+		
+		//컬러박스 즐겨찾기 해제
+		public void release(int boxId);
+		
+		//즐겨찾기를 등록한 회원의 컬러박스 리스트
+		public List<ColorBoxVO> favoritesList(int id);
+		
+		//컬러박스 좋아요 많은 순으로 전체 조회
+		public List<ColorBoxVO> boxLikeDesc();
+		
+		
+		
 		//색상 코드 추가
 		public void insertHex(ColorVO vo);
 		

@@ -33,6 +33,10 @@ public class ColorVO {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
+	@Override
+	public String toString() {
+		return "ColorVO [colorId=" + colorId + ", boxId=" + boxId + ", hex=" + hex + ", regDate=" + regDate + "]";
+	}
 	
 	
 }
